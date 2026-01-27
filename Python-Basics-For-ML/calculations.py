@@ -1,0 +1,5 @@
+print(4**3)
+print(4**10)
+print(4**29)
+print(4**150)
+print(4**1000)
