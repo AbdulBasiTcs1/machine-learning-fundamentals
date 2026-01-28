@@ -1,0 +1,11 @@
+class Person:
+    def _init_(self,name,age):
+        self.name=name
+        self.age=age
+    def myfunc(self):
+        print("Hello my name is "+self.name)
+        print("Hello my age is : "+self.age)
+p1=Person("akber",21)
+p1.myfunc()
+
+#error in this code 
