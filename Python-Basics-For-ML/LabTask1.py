@@ -9,21 +9,22 @@
 # 81 to 90 
 # Grade A if marks are between 91 to 100 
 
-marks = int(input("Enter your marks (1-100) : "))
+marks = int(input("Enter your marks (1-100): "))
 
-if marks < 50 :
+if marks < 1 or marks > 100:
+    print("Please enter marks between 1 and 100")
+elif marks < 50:
     print("Grade F")
-elif marks >= 50 and marks <=60 :
+elif marks <= 60:
     print("Grade E")
-elif marks >= 61 and marks <=70:
+elif marks <= 70:
     print("Grade D")
-elif marks >=71 and marks <=80 :
+elif marks <= 80:
     print("Grade C")
-elif marks >= 81 and marks <=90:
+elif marks <= 90:
     print("Grade B")
-elif marks >=91 and marks <=100:
+else:
     print("Grade A")
-else :
-    print("Please enter marks b/w 1 and 100")
+
 
     
