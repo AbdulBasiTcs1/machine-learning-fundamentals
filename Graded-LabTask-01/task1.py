@@ -1,5 +1,9 @@
-class Trapezoid:
-    
+class Shape:
+    def area(self):
+        raise NotImplementedError
+
+
+class Trapezoid(Shape):
     def __init__(self, a, b, h):
         self.a = a
         self.b = b
@@ -9,9 +13,7 @@ class Trapezoid:
         return 0.5 * (self.a + self.b) * self.h
 
 
-
-class Parallelogram:
-    
+class Parallelogram(Shape):
     def __init__(self, base, height):
         self.base = base
         self.height = height
@@ -24,35 +26,33 @@ class ShapeComparison:
     def __init__(self):
         self.results = {}
 
-    def add_shape(self, name, area):
-        self.results[name] = area
-
-    def find_largest(self):
-        largest_shape = max(self.results, key=self.results.get)
-        return largest_shape, self.results[largest_shape]
+    def add_shape(self, name, shape):
+        self.results[name] = shape.area()
 
     def display_all(self):
-        for shape, area in self.results.items():
-            print(f"{shape} Area = {area}")
+        for name, area in self.results.items():
+            print(f"{name} : Area = {area}")
 
+    def find_largest(self):
+        largest = max(self.results, key=self.results.get)
+        return largest, self.results[largest]
+
+
+shapes = {
+    "Trapezoid1": Trapezoid(4, 6, 5),
+    "Trapezoid2": Trapezoid(3, 7, 4),
+    "Parallelogram1": Parallelogram(5, 6),
+    "Parallelogram2": Parallelogram(8, 3)
+}
 
 comparison = ShapeComparison()
 
-t1 = Trapezoid(4, 6, 5)
-t2 = Trapezoid(3, 7, 4)
+for name, shape in shapes.items():
+    comparison.add_shape(name, shape)
 
-p1 = Parallelogram(5, 6)
-p2 = Parallelogram(8, 3)
-
-comparison.add_shape("Trapezoid1", t1.area())
-comparison.add_shape("Trapezoid2", t2.area())
-comparison.add_shape("Parallelogram1", p1.area())
-comparison.add_shape("Parallelogram2", p2.area())
-
-print("All Shape Areas:")
 comparison.display_all()
 
 largest_shape, largest_area = comparison.find_largest()
 
-print("\nShape with Largest Area:")
-print(f"{largest_shape} with area = {largest_area}")
+print("\nLargest Shape:")
+print(f"{largest_shape} -> Area = {largest_area}")
